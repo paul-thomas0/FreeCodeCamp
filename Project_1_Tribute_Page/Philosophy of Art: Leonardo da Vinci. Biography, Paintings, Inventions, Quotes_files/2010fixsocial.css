@@ -1,0 +1,70 @@
+/* CSS Document */
+
+body { font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: #444444; font-size: 16px; background-color: white; }
+table,tr,td,caption { font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: #444444; font-size: 16px; }
+form { margin-bottom:0; }
+a.top { margin-top: -40px; padding-top:40px; width: 1px; display: block;}
+
+div.divabsright { position:absolute; top:40px; width:18%; right:0px; height:800px; }
+div.divfixright { position:fixed; top:40px; width:18%; right:0px; height:800px; overflow:auto; background-image:url(http://www.spaceandmotion.com/Images/nav/woman-forest-bg600.jpg); background-position: top center; }
+div.divabsleft { position:absolute; top:40px; left:0px; width:15%; height:900px; }
+div.divfixleft { position:fixed; top:40px; left:0px; width:15%; height:900px; background-image:url(http://www.spaceandmotion.com/Images/nav/woman-forest-bg600.jpg); background-position: top center; }
+div.divabstop { position:absolute; top:0px; left:0px; right:0px; height:40px; background-color:#CDCBFC }
+div.divfixtop { position:fixed; top:0px; left:0px; right:0px; height:40px; background-color:#CDCBFC }
+div.divtitle { height:85px; background-image:url(http://www.spaceandmotion.com/Images/nav/water-waves2f.jpg) }
+div.divintro { height:160px; font-size:12px; overflow:auto; background-color:#FFFFF2; }
+div.divcontent { width:63%; padding: 10px 10px 0px 0px; text-align:left; background-color:white; }
+
+a { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: #333388; text-decoration: none; }
+a:hover { font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: #3333CC; text-decoration: underline; }
+a.head12 { font-family: Geneva,Arial,Helvetica,sans-serif; color: #000000; font-size: 12px; text-decoration: none; }
+a.head12:hover { font-family: Geneva,Arial,Helvetica,sans-serif; color: #333366; font-size: 12px; text-decoration: underline; }
+a.head10b { font-family: Geneva,Arial,Helvetica,sans-serif; font-size: 10px; color: #444444; text-decoration: none; }
+a.head10b:hover { font-family: Geneva,Arial,Helvetica,sans-serif; color: #330033; font-size:10px; text-decoration: underline; }
+a.h10blue { font-family: Geneva,Arial,Helvetica,sans-serif; font-size: 10px; color: #3333CC; text-decoration: none; }
+a.h10blue:hover { font-family: Geneva,Arial,Helvetica,sans-serif; color: #3333CC; font-size:10px; text-decoration: underline; }
+a.head10c { font-family: Geneva,Arial,Helvetica,sans-serif; font-size: 10px; color: #999999; text-decoration: none; }
+a.head10c:hover { font-family: Geneva,Arial,Helvetica,sans-serif; color: #9966FF; font-size:10px; text-decoration: underline; }
+a.head9ph { font-family: Geneva,Arial,Helvetica,sans-serif; font-size: 9px; color: #444444; text-decoration: none; }
+a.head9ph:hover { font-family: Geneva,Arial,Helvetica,sans-serif; color: #3333CC; font-size:9px; text-decoration: underline; }
+a.al { font-family: Comic sans MS; color: #333366; font-size: 14px; text-decoration: none; }
+a.al:hover { font-family: Comic sans MS; color: #330033; font-size: 14px; text-decoration: underline; }
+a.ac { font-family: Comic sans MS; color: #330033; font-size: 14px; text-decoration: underline; }
+a.ac:hover { font-family: Comic sans MS; color: #330033; font-size: 14px; text-decoration: underline; }
+a.h2 { font-family: Times New Roman, Times, serif; color: #330033; font-size: 35px; font-style: italic; font-weight: normal; }
+a.h2:hover { font-family: Times New Roman, Times, serif; color: #330033; font-size: 35px; font-style: italic; font-weight: normal; text-decoration: underline; }
+h1 { font-family: Times New Roman, Times, serif; color: #330033; font-size: 50px; font-style: italic; font-weight: normal; }
+h2 { font-family: Times New Roman, Times, serif; color: #330033; font-size: 35px; font-style: italic; font-weight: normal; }
+h3 { font-family: Times New Roman, Times, serif; color: #330033; font-size: 24px;	font-style: italic; font-weight: normal; margin: 10px 0px 10px 0px; padding: 0px 0px 0px 0px; }
+h4 { font-family: Times New Roman, Times, serif; color: #330033; font-size: 18px; font-style: italic; }
+.quote { font-family: Comic sans MS; color: #555555; font-size: 16px; font-style: italic; }
+.quote14 { font-family: Comic sans MS; color: #000033; font-size: 14px; }
+.quote12 { font-family: Comic sans MS; color: #000033; font-size: 12px; }
+.bquote { font-family: Comic sans MS; font-size: 16px; font-style: italic; }
+.fig { font-family: Verdana,Geneva,Arial,Helvetica,sans-serif; color: #330033; font-size: 12px; font-weight: normal; }
+.heading { font-family: Times New Roman, Times, serif; font-size: 50px; font-style: italic; font-weight: normal; }
+.h50 { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: #3333CC; font-size: 50px; }
+.h40 { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: #3333CC; font-size: 40px; }
+.h30 { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: #3333CC; font-size: 30px; }
+.h20 { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: #3333CC; font-size: 20px; }
+.f30 { font-size: 30px; }
+.f24 { font-size: 24px; }
+.f20 { font-size: 20px; }
+.f18 { font-size: 18px; }
+.f18red { font-size: 18px; color:#990000; }
+.f16 { font-size: 16px; }
+.f14 { font-size: 14px; }
+.f12 { font-size: 12px; }
+.f12grey { font-size: 12px; color: #666666; }
+.f12purple { font-size: 12px; color: #9933CC; }
+.f12page { font-size: 12px; color: #330033; }
+.f12bold { font-size: 12px; font-weight: bold; }
+.f11 { font-size: 11px; }
+.f11grey { font-size: 11px; color: #666666; }
+.f10 { font-size: 10px; }
+.f10grey { font-size: 10px; color: #666666; }
+.f9 { font-size: 9px; }
+.f9grey { font-size: 9px; color: #666666; }
+.fred { color: red; }
+.fpurple { color: #663366; }
+.fblue { color: #6600FF; }

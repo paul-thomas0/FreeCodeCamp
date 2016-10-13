@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Random Quote Generator</title>
+<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Satisfy" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<style>
+body {
+  background-image: url("https://goo.gl/NqdW36");
+  background-size: cover;
+}
+
+.quote-surround {
+  width: 100%;
+	padding: 0;
+	display: table;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+}
+.light-background {
+
+  padding: 0;
+	vertical-align: middle;
+	display: table-cell;
+	margin: 0;
+}
+.quote-text {
+
+    width: 50vw;
+  	background-color: #fff;
+  	margin: 0 auto;
+  	text-align: left;
+  	padding: 10px;
+    height: 80vh;
+    position: relative;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+   background: rgba(204, 204, 204, 0.7);
+}
+img {
+    max-width: 100%;
+    display:block;
+    margin: auto;
+    }
+#Next-button {
+    position:absolute;
+    right: 8px;
+    bottom: 8px;
+}
+
+#tweet-button {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+}
+
+#quoteText {
+  text-align: center;
+  padding-top: 80px;
+  font-family: 'Satisfy', cursive;
+  font-size: 28px;
+}
+
+#quoteAuthor {
+  text-align: right;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Berkshire Swash', cursive;
+
+}
+
+@media only screen and (max-width: 500px) {
+  #quoteText {
+    text-align: center;
+    padding-top: 70px;
+    font-family: 'Satisfy', cursive;
+    font-size: 1em;
+  }
+}
+
+</style>
+</head>
+<body>
+  <div class = "quote-surround">
+    <div class = "light-background">
+      <div class = "quote-text">
+        <h1>Random Quote Generator</h1>
+        <img src="https://goo.gl/w8hy92"></img>
+        <p id="quoteText"></p>
+        <p id="quoteAuthor"></p>
+        <button id = "tweet-button" onclick="tweetThis()">Tweet it <i class="fa fa-twitter"></i></button>
+        <button id = "Next-button" onclick="getQuote()"><i class ="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" >
+function getQuote() {
+$.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json) {
+  var quote = json.quoteText;
+  var quoteAuthor = json.quoteAuthor;
+  $("#quoteText").html(quote);
+  $("#quoteAuthor").html("-"+quoteAuthor);
+  //$("#quoteText").html(JSON.stringify(json));
+ });
+}
+
+function tweetThis() {
+  $quote = $("#quoteText").text();
+  $quoteAuthor = $("#quoteAuthor").text();
+  $text = $quote + " -" + $quoteAuthor;
+  $text = encodeURIComponent($text);
+  var loc = $(this).attr('href');
+   //e.preventDefault();
+   window.open('http://twitter.com/share?url=' + loc + '&text=' + $quote+ " -" +$quoteAuthor , '_blank');
+}
+
+$(document).ready(function() {
+  getQuote();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> 
+<style>
+body {
+  font-family: 'VT323', monospace;
+  color: green;
+  background-color: black;
+  font-size: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+.search-box input {
+  	font-family: 'VT323', monospace;
+	border-bottom: 1px solid #444;
+  	border-top: 0px;
+  	border-left: 0px;
+  	border-right: 0px;
+	background-color: black;
+	display: block;
+	float: left;
+	height: 40px;
+	margin: 0;
+	padding: 0 10px;
+  	width: 100%;
+}
+
+.search-box input:focus {
+	border-color: #393;
+	color: #efe;
+	outline: none;
+}
+#result {
+	color: white;
+}
+
+.wiki-links {
+	text-decoration: none;
+	color: green;
+}
+
+.wiki-link {
+	display: block;
+	
+}
+
+#result {
+
+	margin: 40px;
+}
+
+button {
+background-color: black;
+border: 2px solid green;
+display: block;
+left: 45%;
+top: 4px;
+padding: 4px;
+position: relative;
+text-decoration: none;
+font-family: 'VT323', monospace; 
+}
+button:hover {
+background-color: darkgrey;
+border: 2px solid green;
+display: block;
+left: 45%;
+top: 4px;
+padding: 4px;
+position: relative;
+text-decoration: none;
+font-family: 'VT323', monospace;
+}
+</style>
+</head>
+<body>
+<h1>Wikipedia Viewer</h1>
+<section class="search-box">
+	<form action="" method="" id="search-form" onsubmit="return false">
+		<input type="text"  id="s" autofocus="autofocus" placeholder="Search..."/>
+	</form>
+	<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><button>I'am feeling lucky.</button></a>
+</section>
+<section id = "result"></section>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" >
+$(document).ready(function () {
+	$("#s").val("");
+});
+
+function search() {
+  // Use Ajax to handle things
+
+ //$("#result").append("<p>This is life</p>");
+
+  $.ajax({
+    url: 'https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=' + $('#s').val(),
+    dataType: 'jsonp',
+    type: 'POST',
+    headers: {
+      'Api-User-Agent': 'Example/1.0'
+    },
+    success: function(data) {
+
+      var resArr = data.query.search;
+      var resultTitle = [];
+      var result
+		$('#result').empty();
+      //For each result, generate the html data.
+      for (var result in resArr) {
+			$('#result').append('<div class = "wiki-link"><h3><a class = "wiki-links" href = "https://en.wikipedia.org/wiki/'+resArr[result].title+'" target="_blank">'+resArr[result].title+'</a></h3><p>'+resArr[result].snippet+'</p></div>');
+    
+      }
+      
+   }
+      
+     
+    
+  });
+
+
+}
+
+
+
+$("#s").keypress(function(e) {
+  if(e.which == 13 && $("#s").val() === "") {
+  $('#result').empty();
+  	$("#result").append("Please enter a search string!!");
+  } else if(e.which == 13) {
+  	search();
+  }
+  	
+});
+</script>
+</html>

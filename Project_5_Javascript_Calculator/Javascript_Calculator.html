@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Calculator</title>
+<meta name="author" content="paul" >
+<meta name="date" content="2016-10-04T21:56:56+0530" >
+
+<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+
+<style type="text/css">
+body {
+background-image: url("https://goo.gl/qWZhtx");
+background-size: 100vh 100vw;
+
+}
+
+#title {
+width: 100%;
+text-align: center;
+font-family: 'Orbitron', sans-serif;
+color: white;
+margin-left: -4px;
+}
+
+#description {
+text-align: center;
+font-family: 'Orbitron', sans-serif;
+background-color: white;
+width: 150px;
+float: right;
+display: none;
+z-index: 1;
+position: fixed;
+overflow: auto;
+}
+
+#show {
+float: left;
+background-color: #555555;
+border: none;
+color: white;
+padding: 8px 8px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+position: absolute;
+top: 4px;
+left: 4px;
+
+}
+
+.calculator-external-body {
+background-color: #e6e6e6;
+position: absolute;
+margin: auto;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+height: 330px;
+width: 230px;
+-webkit-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+border-radius: 8px;
+}
+
+.calculator-surrounding {
+background-color: #99ff66;
+position: absolute;
+margin: auto;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+height: 300px;
+width: 200px;
+-webkit-box-shadow: inset 6px 6px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 6px 6px 5px 0px rgba(0,0,0,0.75);
+box-shadow: inset 6px 6px 5px 0px rgba(0,0,0,0.75);
+}
+
+.calculator-body {
+background-color: #e6e6e6;
+position: absolute;
+margin: auto;
+right: 0;
+bottom: 0;
+left: 0;
+height: 200px;
+width: 200px;
+}
+
+.calculator-buttons {
+background-color: #e6e6e6;
+position: absolute;
+margin: auto;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+height: 200px;
+width: 200px;
+}
+
+.calculator-buttons .row {
+height: 50px;
+}
+
+.col {
+display: inline-block;
+margin: 0;
+}
+
+.col button {
+height: 50px;
+width: 50px;
+border: 1px solid black;
+text-align: center;
+float: left;
+}
+
+#calculator-display {
+position: relative;
+height: 100px;
+width: 200px;
+font-family: 'Orbitron', sans-serif;
+text-align: right;
+
+}
+
+#result {
+height: 30px;
+font-size: 18px;
+margin: 0;
+margin-top: 4px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+
+}
+
+#computing {
+height: 70px;
+font-size: 12px;
+margin: 0;
+word-wrap: break-word;
+}
+</style>
+</head>
+<body>
+<h1 id="title">Calculator</h1><button id="show">Info</button>
+<p id="description">This calculator specifically evaluates the given mathematical expression following operator precedence.
+Clear the screen before writing the next expression.</p>
+<div class="calculator-external-body">
+<div class="calculator-surrounding">
+<div id="calculator-display"><h3 id="result"></h3><p id="computing"></p></div>
+<div class="calculator-body">
+<div class="calculator-buttons">
+<div class="row">
+<div class="col"><button>7</button></div><!-- --><div class="col"><button>8</button></div><!-- --><div class="col"><button>9</button></div><!-- --><div class="col"><button>+</button></div><!-- -->
+</div>
+<div class="row">
+<div class="col"><button>4</button></div><div class="col"><button>5</button></div><div class="col"><button>6</button></div><div class="col"><button>-</button></div>
+</div>
+<div class="row">
+<div class="col"><button>1</button></div><div class="col"><button>2</button></div><div class="col"><button>3</button></div><div class="col"><button>/</button></div>
+</div>
+<div class="row">
+<div class="col"><button>clr</button></div><div class="col"><button>0</button></div><div class="col"><button>=</button></div><div class="col"><button>*</button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<script src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript" >
+
+
+$(document).ready(function() {
+
+			var inputExpression = [""]; //each element is a operand, operator or a ()
+			var stack = []; //to be used for create RPN
+			var outputQueue = [""]; //RPN of the inputExpression
+			var lengthHere = 0;
+			var result = 0;
+        $('.col').click(function() {
+            var clickedVariable = $(this).text();
+				
+				/**
+				*Going to convert input into reverse polish notation 
+				*for giving error-less output later. For converting the input expression
+				*into reverse polish notation. I am going to use Shunting-Yard Algorithm 
+				*as described in: https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+				*/            
+            
+            if (clickedVariable === "+" || clickedVariable ==="-" || clickedVariable === "/" || clickedVariable === "*") {
+            	lengthHere++;
+            	inputExpression[lengthHere]  = clickedVariable;
+            	console.log(inputExpression);
+            	lengthHere++;
+            	inputExpression[lengthHere] = "";
+            } else if (clickedVariable ==="=") {
+            	result = evaluateExpression(inputExpression);
+            	$("#result").text(result);
+            	console.log("result " +result);
+            } else if(clickedVariable !== "clr"){
+            	inputExpression[lengthHere] = inputExpression[lengthHere] + clickedVariable;
+            	console.log(inputExpression);
+            }
+            if (clickedVariable !== "" && clickedVariable !== "=" ) {
+            	$("#computing").append(clickedVariable);	
+            } 
+            if (clickedVariable === "clr") {
+           	 	inputExpression = [""]; //each element is a operand, operator or a ()
+					stack = []; //to be used for create RPN
+					outputQueue = [""]; //RPN of the inputExpression
+					lengthHere = 0;
+					result = 0;
+            	$("#computing").text("");
+            	$("#result").text("");
+            }
+            
+        });
+        
+        function evaluateExpression(inputExpression) {
+        	//convert the equation to postfix
+        	var count = 0;
+        	stack = [];
+        	var newExpression = [];
+        	newExpression = returnPostfixExpression(inputExpression);
+        	//console.log("back in here " + returnPostfixExpression(inputExpression));
+        	console.log("newExpression" + newExpression);
+        	while (count <= newExpression.length - 1) {
+        	
+        		if (newExpression[count] === "*" || newExpression[count] === "/" 
+        			|| newExpression[count] === "-" || newExpression[count] ==="+") {
+        			
+        			var operand2 = stack.pop();
+        			var operand1 = stack.pop();
+        			operand1 = Number(operand1);
+        			operand2 = Number(operand2);
+					console.log("operand1 " + operand1);
+        			console.log("operand2 " + operand2);
+        			
+        			if (newExpression[count] === "*") {
+        			
+        				console.log("operand1 " + operand1);
+        				console.log("operand2 " + operand2);
+        				stack.push(operand1 * operand2);
+        				
+        			} else if (newExpression[count] === "+") {
+        			
+        				console.log("operand1 " + operand1);
+        				console.log("operand2 " + operand2);
+        				stack.push(operand1 + operand2);
+        				
+        			} else if (newExpression[count] === "-") {
+        			
+        				console.log("operand1 " + operand1);
+        				console.log("operand2 " + operand2)
+        				stack.push(operand1 - operand2);
+        				
+        			} else if(newExpression[count] === "/") {
+        			
+        				console.log("operand1 " + operand1);
+        				console.log("operand2 " + operand2)
+        				stack.push(operand1 / operand2);
+        				
+        			}
+        		} else {
+        		
+        			stack.push(newExpression[count]);
+        			console.log("stack/operands " + stack);
+        			
+        		}
+        		count++;
+        	}
+        	return stack.pop();
+        }
+        
+        function returnPostfixExpression(inputExpression) {
+        	var sizeOfExpression = lengthHere;
+        	var currentReadToken = 0;
+        	
+        	//Read a token
+        	while(currentReadToken <= inputExpression.length - 1) {
+        	console.log("inside while loop " + inputExpression)
+				if((inputExpression[currentReadToken] === "+" || inputExpression[currentReadToken] === "-" 
+					|| inputExpression[currentReadToken] === "*" || inputExpression[currentReadToken] === "/")) {
+					
+						console.log("* / + -");
+						if ((inputExpression[currentReadToken] === "*" || inputExpression[currentReadToken] === "/") &&
+								stack.length === 0 ) {
+								
+							console.log("operator * /");
+							stack.push(inputExpression[currentReadToken]);
+							console.log("inputExpression " + inputExpression);
+							console.log("output Queue" + outputQueue);
+							console.log("stack" + stack);
+							
+						} else if ((inputExpression[currentReadToken] === "+" || inputExpression[currentReadToken] === "-") &&
+							stack.length === 0 ){
+							
+							console.log("operator + -");
+							stack.push(inputExpression[currentReadToken]);
+							console.log("inputExpression " + inputExpression);
+							console.log("output Queue" + outputQueue);
+							console.log("stack " +stack);
+							
+						} else if ((inputExpression[currentReadToken] === "*" || inputExpression[currentReadToken] === "/") &&
+								stack[stack.length -1] === "+" || stack[stack.length -1 ] === "-") {
+							
+							stack.push(inputExpression[currentReadToken]);
+							console.log("inputExpression " + inputExpression);
+							console.log("output Queue" + outputQueue);
+							console.log("stack " + stack);
+							
+						} else if ((inputExpression[currentReadToken] === "+" || inputExpression[currentReadToken] === "-") &&
+							stack[stack.length-1] === "*" || stack[stack.length-1] === "/") {
+							
+							outputQueue.push(stack.pop());
+							stack.push(inputExpression[currentReadToken]);
+							console.log("inputExpression " + inputExpression);
+							console.log("output Queue" + outputQueue);
+							console.log("stack " + stack);
+							
+						} else if ((inputExpression[currentReadToken] === "+" || inputExpression[currentReadToken] === "-") &&
+							stack[stack.length -1] === "+" || stack[stack.length -1] ==="-") {
+							
+							if (inputExpression[currentReadToken] === "-" && stack[stack.length -1] === "+") {
+							
+								outputQueue.push(stack.pop());
+								stack.push(inputExpression[currentReadToken]);
+								
+							} else {
+							
+								stack.push(inputExpression[currentReadToken]);
+								
+							}
+							
+							console.log("inputExpression " + inputExpression);
+							console.log("output Queue" + outputQueue);
+							console.log("stack " + stack);
+							
+						}  else if ((inputExpression[currentReadToken] === "*" || inputExpression[currentReadToken] === "/") &&
+							stack[stack.length -1] === "*" || stack[stack.length -1] ==="/") {
+							
+							if (inputExpression[currentReadToken] === "/" && stack[stack.length -1] === "*") {
+							
+								outputQueue.push(stack.pop());
+								stack.push(inputExpression[currentReadToken]);
+								
+							} else {
+							
+								stack.push(inputExpression[currentReadToken]);
+								
+							}
+							
+							console.log("inputExpression " + inputExpression);
+							console.log("output Queue" + outputQueue);
+							console.log("stack " + stack);
+							
+						} 
+					} else {
+					
+						outputQueue.push(inputExpression[currentReadToken]);
+						console.log("inputExpression " + inputExpression);
+						console.log("output Queue" + outputQueue);
+						console.log("stack " + stack);
+						
+					}
+					
+					currentReadToken++;
+					console.log("output Queue" + outputQueue);
+					console.log("inputExpression " + inputExpression);
+					console.log("stack " + stack);        	
+        	}
+        	
+        	while ( stack.length !== 0) {
+        		outputQueue.push(stack.pop());
+        	}
+        	console.log("After stack empty" + outputQueue);
+        	console.log("stack" + stack);
+        	return outputQueue;
+
+	}
+	});
+    $( "#show" ).click(function() {
+  		$( "#description" ).slideToggle( "slow" );
+		});
+    
+</script>
+</html>

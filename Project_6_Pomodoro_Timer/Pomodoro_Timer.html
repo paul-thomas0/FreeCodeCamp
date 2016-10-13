@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Slider functionality</title>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
+    <!-- Javascript -->
+    <script>
+        $(function() {
+            $("#break-slider-horizontal").slider({
+                orientation: "horizontal",
+                range: "min",
+                min: 1,
+                max: 60,
+                value: 60,
+                slide: function(event, ui) {
+                    $("#break-display").text(ui.value);
+                }
+            });
+            $("#break-display").text($("#break-slider-horizontal").slider("value"));
+        });
+        $(function() {
+            $("#timer-slider-horizontal").slider({
+                orientation: "horizontal",
+                range: "min",
+                min: 1,
+                max: 60,
+                value: 60,
+                slide: function(event, ui) {
+                    $("#timer-display").text(ui.value);
+                }
+            });
+            $("#timer-display").text($("#timer-slider-horizontal").slider("value"));
+        });
+        $(window).on('load', function() {
+            if ($(window).height() > 480) {
+                $('#timer-display').addClass('time-normal');
+                $('#timer-display').removeClass('time-small');
+                $('#break-display').addClass('break-normal');
+                $('#break-display').removeClass('break-small');
+            } else {
+                $('#timer-display').addClass('time-small');
+                $('#timer-display').removeClass('time-normal');
+                $('#break-display').addClass('break-small');
+                $('#break-display').removeClass('break-normal');
+            }
+        });
+
+
+
+        var timer_nIntervId = false; //a specific id assigned to timer
+        var timer_minutes = 0; //timer minutes count
+        var timer_seconds = 0; //timer seconds count
+        var timer_check = true; //check if the timer has started
+
+        var break_nIntervId = false; //a unique id assigned to break
+        var break_minutes = 0; //break minutes count
+        var break_seconds = 0; //break seconds count
+        var break_check = true; //check if the break has started
+
+
+        var TIMER_VAR = 0;
+        var BREAK_VAR = 1;
+
+        var timer_or_break = TIMER_VAR;
+
+        function startPodomoroTimer() {
+
+            if (timer_check && timer_or_break === TIMER_VAR) {
+                if (timer_nIntervId) {
+                    clearInterval(timer_nIntervId);
+                    timer_nIntervId = false;
+                } else {
+                    var temp = $("#timer-display").text().split(":");
+                    timer_minutes = temp[0];
+                    break_nIntervId = false;
+                    $("#timer-slider-horizontal").slider("disable");
+                    $("#break-slider-horizontal").slider("disable");
+                    timer_nIntervId = setInterval(reduceAsecond, 1000);
+                }
+                console.log("Ended");
+            } else if (break_check && timer_or_break === BREAK_VAR) {
+                if (break_nIntervId) {
+                    clearInterval(break_nIntervId);
+                    break_nIntervId = false;
+                } else {
+                    var temp = $("#break-display").text().split(":");
+                    break_minutes = temp[0];
+                    timer_nIntervId = false;
+                    break_nIntervId = setInterval(reduceAsecond, 1000);
+                }
+            }
+            console.log("Totally ended");
+        }
+
+        function reduceAsecond() {
+            console.log("inside reduceAsecond");
+            console.log("timer_minutes: " + timer_minutes);
+            if (timer_minutes < 0) {
+                console.log("in here again");
+                sound();
+                stopTheTimer();
+                if (timer_or_break === TIMER_VAR) {
+                    console.log("changed to BREAK_VAR: " + timer_or_break);
+                    timer_or_break = BREAK_VAR;
+                    timer_minutes = 0;
+                    break_minutes = $("#break-display").text();
+                    break_nIntervId = setInterval(reduceAsecond, 1000);
+                } else {
+                    console.log("changed to TIMER_VAR: " + timer_or_break);
+                    timer_or_break = TIMER_VAR;
+                }
+            }
+
+            if (timer_or_break === TIMER_VAR) {
+                //                timer_check = false;
+                if (timer_minutes == 1) {
+                    timer_minutes = 0;
+                    timer_seconds = 59;
+                    $("#timer-display").text(timer_minutes + ":" + timer_seconds);
+                } else {
+                    $("#timer-display").text(timer_minutes + ":" + timer_seconds);
+                }
+                if (timer_seconds == 0) {
+                    console.log("timer_seconds *****" + timer_seconds);
+                    timer_seconds = 59;
+                    timer_minutes--;
+                } else
+                    timer_seconds--;
+                console.log("timer_seconds = " + timer_seconds);
+            } else {
+                console.log("break has started");
+                //                break_check = false;
+                if (break_minutes < 0) {
+                    sound();
+                    stopTheTimer();
+                    if (timer_or_break === TIMER_VAR) {
+                        timer_or_break = BREAK_VAR;
+                    } else {
+                        timer_or_break = TIMER_VAR;
+                    }
+                }
+                if (break_minutes == 1) {
+                    break_minutes = 0;
+                    break_seconds = 59;
+                    $("#break-display").text(break_minutes + ":" + break_seconds);
+                } else if (break_minutes != -1) {
+                    $("#break-display").text(break_minutes + ":" + break_seconds);
+                }
+
+                if (break_seconds == 0) {
+                    console.log("break_seconds = " + break_seconds);
+                    break_seconds = 59;
+                    break_minutes--;
+                } else
+                    break_seconds--;
+            }
+        }
+
+        function stopTheTimer() {
+            if (timer_or_break === TIMER_VAR) {
+                clearInterval(timer_nIntervId);
+                timer_nIntervId = false;
+            } else {
+                clearInterval(break_nIntervId);
+                break_nIntervId = false;
+            }
+        }
+
+        function pause() {
+            console.log("pause clicked");
+            console.log(timer_nIntervId);
+
+            if (timer_nIntervId == false && break_nIntervId) {
+                startPodomoroTimer();
+            } else if (break_nIntervId == false && timer_nIntervId) {
+                startPodomoroTimer();
+            }
+        }
+
+        function reset() {
+            if (timer_nIntervId === false || break_nIntervId === false) {
+                clearInterval(timer_nIntervId);
+                clearInterval(break_nIntervId);
+                $("#timer-slider-horizontal").slider("enable");
+                $("#break-slider-horizontal").slider("enable");
+                $("#timer-slider-horizontal").slider("value", 60);
+                $("#break-slider-horizontal").slider("value", 60);
+                $("#timer-display").text($("#timer-slider-horizontal").slider("value"));
+                $("#break-display").text($("#break-slider-horizontal").slider("value"));
+                break_seconds = 0;
+                timer_seconds = 0;
+            }
+        }
+
+        function sound() {
+            var audio = document.createElement("audio");
+            audio.src = "https://goo.gl/HFQJKG";
+            //              audio.addEventListener("ended", function () {
+            //                document.removeChild(this);
+            //              }, false);
+            audio.play();
+        }
+    </script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            font-family: 'Old Standard TT', serif;
+        }
+
+        #pomodoro-clock-interface {
+            background-color: #FF9900;
+            position: relative;
+            height: 100vh;
+        }
+
+        .bars-buttons {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            padding-bottom: 40px;
+        }
+
+        #timer-slider-horizontal {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            width: 50vw;
+            margin-right: auto;
+            margin-left: auto;
+            display: inline-block;
+        }
+
+        #break-slider-horizontal {
+            margin-top: 10px;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-left: auto;
+            width: 50vw;
+            text-align: center;
+            color: black;
+            display: inline-block;
+        }
+
+        #timer-slider-horizontal.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all {
+            margin-bottom: 0px;
+        }
+
+        #buttons {
+            margin-top: 10px;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+        }
+
+        .bar {
+            display: inline-block;
+            text-align: center;
+            background-color: : #097054;
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        #timer-text {
+            display: inline-block;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #break-text {
+            display: inline-block;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .time-small {
+            margin: 0;
+            padding: 0px;
+            text-align: center;
+            font-size: 90px;
+            color: #097054;
+        }
+
+        .time-normal {
+            margin: 0;
+            padding: 0px;
+            text-align: center;
+            font-size: 160px;
+            color: #097054;
+        }
+
+        .time-normal-load {
+            margin: 0;
+            padding: 0px;
+            text-align: center;
+            font-size: 160px;
+        }
+
+        .break-small {
+            margin: 0;
+            padding: 0px;
+            text-align: center;
+            font-size: 90px;
+            color: #097054;
+        }
+
+        .break-normal {
+            margin: 0;
+            padding: 0px;
+            text-align: center;
+            font-size: 160px;
+            color: #097054;
+        }
+
+        .break-normal-load {
+            margin: 0;
+            padding: 0px;
+            text-align: center;
+            font-size: 160px;
+        }
+
+        #start_button,
+        #pause_button,
+        #reset_button {
+            -webkit-border-radius: 10;
+            -moz-border-radius: 10;
+            border-radius: 10px;
+            -webkit-box-shadow: 0px 1px 3px #666666;
+            -moz-box-shadow: 0px 1px 3px #666666;
+            box-shadow: 0px 1px 3px #666666;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 20px;
+            background: #097054;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+        }
+
+        #start_button:active {
+            background: #097054;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML -->
+    <div id="pomodoro-clock-interface">
+        <h1 style="text-align:center; margin:0;">Pomodoro Clock</h1>
+        <h1 class="" type="text" id="timer-display"></h1>
+        <h1 class="" type="text" id="break-display"></h1>
+        <div class="bars-buttons">
+            <div class="bar" id="timer_bar_background">
+                <!---->
+                <p id="timer-text">TIMER</p>
+                <!---->
+                <div id="timer-slider-horizontal">
+                    <!---->
+                </div>
+                <!---->
+            </div>
+            <div class="bar" id="break_bar_background">
+                <!---->
+                <p id="break-text">BREAK</p>
+                <div id="break-slider-horizontal"></div>
+            </div>
+            <div id="buttons">
+                <button id="start_button" onclick="startPodomoroTimer()">Start</button>
+                <button id="pause_button" onclick="pause()">Pause</button>
+                <button id="reset_button" onclick="reset()">Reset</button>
+            </div>
+        </div>
+</body>
+
+</html>

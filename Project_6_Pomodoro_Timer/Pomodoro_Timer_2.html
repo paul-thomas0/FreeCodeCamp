@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pomodoro Timer</title>
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script>
+
+  $( function() {
+    $( "#timer-slider-horizontal" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      min: 0,
+      max: 60,
+      value: 60,
+      slide: function( event, ui ) {
+        $( "#timer-display" ).text( ui.value );
+      }
+    });
+    $( "#timer-display" ).text( $( "#timer-slider-horizontal" ).slider( "value" ) );
+  } );
+
+  $( function() {
+    $( "#break-slider-horizontal" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      min: 0,
+      max: 60,
+      value: 60,
+      slide: function( event, ui ) {
+        $( "#break-display" ).text( ui.value );
+      }
+    });
+    $( "#break-display" ).text( $( "#break-slider-horizontal" ).slider( "value" ) );
+  } );
+  var nIntervId;
+  var seconds = 0;
+  var minutes = 0;
+
+  function startTimer() {
+
+    function changeColor() {
+      nIntervId = setInterval(flashText, 1000);
+    }
+
+    function flashText() {
+
+    }
+
+    function stopTextColor() {
+      clearInterval(nIntervId);
+    }
+
+  }
+
+  </script>
+  <style>
+  html, body {
+
+  }
+
+  .pomodoro-clock-external-interface {
+
+  }
+
+  .pomodoro-clock-interface {
+
+  }
+
+  .pomodoro-timer {
+
+  }
+
+  #timer-horizontal-slider {
+
+  }
+
+  #timer-display {
+
+  }
+
+  #break-display {
+
+  }
+  button {
+
+  }
+  </style>
+</head>
+<body>
+  <div class="pomodoro-clock-external-interface">
+    <div id="timer-horizontal-slider"></div>
+    <div id="break-horizontal-slider"></div>
+    <div class="pomodoro-clock-interface">
+      <div class="pomodoro-clock-timer">
+        <h1 type="text" id="timer-display"></h1>
+        <h1 id="break-display"></h1>
+      </div>
+      <button onclick="startTimer()">Start</button>
+      <button>Reset</button>
+    </div>
+    <p>This is your life and it is ending one minute at a time.<p>
+  </div>
+  <script>
+  console.log("This is your life.");
+  </script>
+</body>
+</html>

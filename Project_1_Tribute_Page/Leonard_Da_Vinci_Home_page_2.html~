@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta name="generator" content="Bluefish 2.2.7" >
+<meta name="author" content="paul" >
+<meta name="date" content="2016-09-26T14:03:48+0530" >
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<style type="text/css">
+html, body {
+margin: 0;
+}
+
+h1 {
+margin: 0;
+padding: 0;
+}
+
+.header {
+color: white;
+font-family: 'Poiret One', cursive;
+width: 100%;
+text-shadow: 4px 4px 6px #000000;
+background-image: url(image_0001.jpg);
+background-size: 100% 100%;
+margin: 0;
+padding: 0;
+width: 100%;
+position: fixed;
+}
+#a-tribute {
+text-align: center;
+position: absolute;
+top: 20%;
+width: 100%;
+
+}
+#to-the {
+text-align: center;
+position: absolute;
+top: 32%;
+width: 100%;
+
+}
+#r-man {
+text-align: center;
+position: absolute;
+top: 38%;
+width: 100%;
+}
+#a {
+text-align: center;
+position: absolute;
+top: 46%;
+width: 100%;
+}
+#a-list {
+text-align: center;
+position: absolute;
+top: 56%;
+width: 100%;
+}
+
+button {
+left: 45%;
+position: absolute;
+top: 90%;
+
+}
+.hidden {
+visibility: hidden;
+position: absolute;
+width: 100%;
+height: 100%;
+}
+
+.intro {
+background-image: url(image_0002.jpg);
+background-size: 100% 100%;
+width: 38%;
+position: absolute;
+}
+
+.timeline {
+width: 62%;
+position: absolute;
+left: 38%;
+background-color: #fdd2b2;
+}
+
+
+table {
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+text-shadow: 1px 1px 0px #fff;
+margin:20px;
+}
+table th {
+padding:21px 25px 22px 25px;
+}
+
+table tr {
+text-align: center;
+padding-left:20px;
+}
+table td:first-child {
+text-align: left;
+padding-left:20px;
+border-left: 0;
+}
+#header-name {
+font-family: 'Poiret One', cursive;
+background-color: #fdd2b2;
+width: 100%;
+text-align:center; 
+}
+</style>
+</head>
+<body>
+<div class="header">
+	<h1 class="header-text" id="a-tribute">A TRIBUTE</h1>
+	<h1 class="header-text" id="to-the">TO THE</h1>
+	<h1 class="header-text" id="r-man">RENAISSANCE MAN</h1>
+	<h3 class="header-text" id="a">A</h3>
+	<h3 class="header-text" id="a-list">Musician. Writer. Military Engineer. Botanist. Mathematician. Painter. Cartographer. Mathematician.
+	Painter. Architect. Geologist. Inventor.</h3>
+	<button>CLICK HERE!</button>
+</div>
+<div class="hidden">
+	<div class="tabbed-view">
+		<h1 id="header-name">Leonardo Da Vinci</h1>
+		<div class="intro">
+		</div>
+		<div class="timeline" style="overflow:scroll">
+		<table>
+  <tr valign="top"> 
+    <td> <h2 style="text-align:center">Timeline</h2>
+      
+      <table>
+        <tr> 
+          <td width="1%"> <p>1452</p></td>
+          <td width="99%"> <p>Leonardo is born on April 15 in the village of Anchiano, 
+              near the town of Vinci.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1467</p></td>
+          <td width="99%"> <p>At 15 Leonardo is sent to Florence to work as apprentice 
+              to Andrea De Verrocchio. </p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1472</p></td>
+          <td width="99%"> <p>20 year-old Leonardo is accepted into the painters' 
+              guild of Florence.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1476</p></td>
+          <td width="99%"> <p>Leonardo is accused of sodomy; he is publicly humiliated 
+              although the charges are later dropped.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1478</p></td>
+          <td width="99%"> <p>The Annunciation is painted. The work, initially 
+              credited to Da Vinci, is now believed to have been painted by Lorenzo 
+              di Credi.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1481</p></td>
+          <td width="99%"> <p>Leonardo begins work on The Adoration of the Magi, 
+              an altarpiece for the Monastery of San Donato at Scopeto.<br>
+              He sketches many studies.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1482</p></td>
+          <td width="99%"> <p>Leonardo moves to Milan to work in the service of 
+              the city's duke, Ludovico Sforza. He gains the title of &quot;painter 
+              and engineer of the duke.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1483</p></td>
+          <td width="99%"> <p>Leonardo paints the <a href="madonna-of-the-rocks.html">Virgin of the Rocks</a>.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1485</p></td>
+          <td width="99%"> <p>Leonardo paints Lady with an Ermine.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1495</p></td>
+          <td width="99%"> <p>Leonardo begins work on The Last Supper in the refectory 
+              of the convent of Santa Maria delle Grazie in Milan.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1498</p></td>
+          <td width="99%"> <p><a href="lastsupper.html">The Last Supper</a> is  completed.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1499</p></td>
+          <td width="99%"> <p>With the duke Ludovico Sforza'a fall from power, 
+              Da Vinci leaves Milan and spends a short time in Venice.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1500</p></td>
+          <td width="99%"> <p>Leonardo begins painting the Virgin and Child with 
+              Saint Anne, a project that he only finishes after 10 years.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1500</p></td>
+          <td width="99%"> <p>Leonardo returns to Florence.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1502</p></td>
+          <td width="99%"> <p>Leonardo begins work as senior military architect 
+              and general engineer for Cesare Borgia, son of Pope Alexander VI.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1503</p></td>
+          <td width="99%"> <p>Leonardo is commissioned to paint the Mona Lisa.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1503</p></td>
+          <td width="99%"> <p>Leonardo is commission to paint a mural for the 
+              council hall in Florence's Palazzo Vecchio, which is to be the Battle 
+              of Anghiari, a work that would remain unfinished.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%" height="4"> <p>1515</p></td>
+          <td width="99%" height="4"> <p>Leonardo paints St. John the Baptist.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1516</p></td>
+          <td width="99%"> <p>The king of France invites Leonardo to come work 
+              for him.</p></td>
+        </tr>
+        <tr> 
+          <td width="1%"> <p>1519</p></td>
+          <td width="99%"> <p>May 2, Leonardo dies in France.</p></td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </td>
+   
+  </tr>
+</table>
+		</div>
+	</div>
+</div>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+   var viewportWidth = $(window).width();
+   var viewportHeight = $(window).height();
+ 	$('.header').css("height", viewportHeight);
+ 	$('.intro').css("height", viewportHeight);
+ 	$('.timeline').css("height", viewportHeight);
+ 	$('.into').css("width", "100%");
+ 	$('button').click(function () {
+ 		$('.header').fadeOut();
+ 		$('.hidden').css("visibility","visible").fadeIn();
+ 	});
+   
+  
+</script>
+</html>
