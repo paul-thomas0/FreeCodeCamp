@@ -1,15 +1,17 @@
 /*Logic for Tic-Tac-Toe:
  * Separation of UI, Logic, And AI
  * */
-var xPlayer = -3;
-var oPlayer = -2;
+var userPlayer = -3;
+var aiPlayer = -2;
 var empty = -1;
+var userMadeMove = false;
+var drawCount = 0;
+var gameStage = [[empty, empty, empty],
+[empty, empty, empty],
+[empty, empty, empty]];
 
 //User Interface Logic
 $(document).ready(function() {
-	var gameStage = [[empty, empty, empty],
-	[empty, empty, empty],
-	[empty, empty, empty]];
 	var user = "";
 	var computer = "";
 	console.log("this is your life");
@@ -18,13 +20,16 @@ $(document).ready(function() {
 	$(".options-box").fadeIn("slow");
 	$(".x-or-o").click(function() {
         user = $(this).text();
-        //console.log("user = " + user);
+        console.log("user = " + user);
         $(".options-box").fadeOut("slow");
+        gameLoop(user);
 	});
 	//Prompt if the user wants to start first and store it
+    //or let the user start first
 	//if the user starts first wait for the input
 	//if the AI is to start first randomly choose a box
 	//then on call the game loop
+   // gameLoop(user);
 });
 //Functionality Logic
 function gameLoop() {

@@ -5,10 +5,11 @@ html, body {
 .container {
     height: 100vh;
     width: 100vw;
-    background-image: url(https://goo.gl/0bdV7B);
+    /* background-image: url(https://goo.gl/0bdV7B);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%;*/
     position: relative;
+    background-color: green;
 }
 
 .options {
@@ -23,7 +24,7 @@ html, body {
     cursor: pointer;
 }
 
-.x-or-o {
+.x-or-o:hover {
     background-color: grey;
 }
 
@@ -33,15 +34,28 @@ h3 {
     text-align: center;
 }
 
-.game-screen {
+.game-stage {
     position: absolute;
     margin: auto;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 260px;
-    width: 190px;
+    height: 262px;
+    width: 210px;
 }
 
+.stage-row {
+    text-align: center;
+}
+
+.stage-col {
+    display: inline-block;
+    height: 86px;
+    width: 63px;
+    background-color: blue;
+    line-height: 80px;
+    vertical-align: middle;
+    font-size: 60px;
+}
 
