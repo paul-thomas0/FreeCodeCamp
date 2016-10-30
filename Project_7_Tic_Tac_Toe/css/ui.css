@@ -12,9 +12,9 @@ html, body {
     background-color: green;
 }
 
-.options {
+.options-box {
     padding-top: 2em;
-    position: relative;
+    position: fixed;
 }
 
 .x-or-o {

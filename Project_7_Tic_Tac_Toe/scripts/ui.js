@@ -31,16 +31,9 @@ $(document).ready(function() {
 	//then on call the game loop
    // gameLoop(user);
 });
-//Functionality Logic
-function gameLoop() {
-	//loop till the following conditions are fulfilled
-	//1. If one of the player wins the game
-	//2. If there is a draw
-	//output the result of the game game
-	//check if the user wants to reset then reset
-}
-//Game AI Logic
-function AILogic() {
-}
 
-
+function updateInterface(row, col, aiChar) {
+    var number = col * 3 + row;
+    console.log("number = " + number);
+    $('*[data-num="'+number+'"]').text(aiChar);
+}
