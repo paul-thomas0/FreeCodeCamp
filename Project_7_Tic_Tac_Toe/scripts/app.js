@@ -16,7 +16,6 @@ function gameLoop(userChoice) {
     var win = false;
     var winner = "";
     var draw = false;
-    var count = 0;
 
     $(".stage-col").unbind().click(function() {
         //console.log("user has clicked the interface");
@@ -128,6 +127,7 @@ function reset() {
     }
     console.log(gameStage);
     drawCount = 0;
+    count = 0;
     firstTime = true;
     clearInterface();
 }

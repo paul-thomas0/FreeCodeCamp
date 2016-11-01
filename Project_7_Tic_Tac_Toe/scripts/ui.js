@@ -12,6 +12,7 @@ var drawScore = 0;
 var userChoice = "";
 var aiChar = "";
 var firstTime = true;
+var count = 0;
 
 var gameStage = [[empty, empty, empty],
 [empty, empty, empty],

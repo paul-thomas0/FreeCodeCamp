@@ -38,6 +38,7 @@ html, body {
 .options-box {
     padding: 2em;
     position: fixed;
+    text-align: center;
     margin: 30% auto;
     left: 0;
     right: 0;
@@ -54,12 +55,13 @@ html, body {
 .x-or-o {
     display: inline-block;
     text-align: center;
-    width: 100%;
+    width: 30%;
     cursor: pointer;
 }
 
 .x-or-o:hover {
-    background-color: #669966;
+    background-color: white;
+    color: #669966;
 }
 
 h3 {
@@ -114,11 +116,14 @@ h3 {
     bottom: 0;
     width: 100%;
     font-family: 'Arvo';
-    font-size: 8vh;
+    font-size: 6vh;
     text-align: center;
     color: white;
 }
-
+.icons i {
+    display: inline-block;
+    width: 30%;
+}
 .scores div {
     display: inline-block;
     width: 30%;
