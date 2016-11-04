@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+body, html {
+    margin: 0;
+    padding: 0px;
+    background-color: #F2EDD8;
+}
+
+.container {
+    background-color:  #F2EDD8;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+.game-container {
+    background-color:  #F2EDD8;
+    height: 82vw;
+    width: 82vw;
+    border-radius: 50%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-box-shadow: 3px 0px 13px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 0px 13px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 0px 13px 0px rgba(0,0,0,0.75);
+}
+
+.game-stage {
+    background-color:  #F2EDD8;
+    height: 91%;
+    width: 91%;
+    border-radius: 50%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.game-stage-top {
+    height: 48%;
+    width: 100%;
+    position: absolute;
+    display: inline-block;
+}
+
+.game-stage-bottom {
+    height: 48%;
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+}
+
+.game-stage-top-button-1 {
+    background-color: #44B3C2;
+    height: 100%;
+    width: 48%;
+    position: absolute;
+    left: 0;
+    border-radius: 100% 0 0 0;
+}
+
+.game-stage-top-button-2 {
+    background-color: #F1A94E;
+    height: 100%;
+    width: 48%;
+    position: absolute;
+    right: 0;
+    border-radius: 0 100% 0 0;
+}
+
+.game-stage-bottom-button-3 {
+    background-color:  #E45641;
+    height: 100%;
+    width: 48%;
+    position: absolute;
+    left: 0;
+    border-radius: 0 0 0 100%;
+}
+
+.game-stage-bottom-button-4 {
+    background-color:  #7B8D8E;
+    height: 100%;
+    width: 48%;
+    position: absolute;
+    right: 0;
+    border-radius: 0 0 100% 0;
+}
+
+.game-screen-border {
+    background-color:  #F2EDD8;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+    -webkit-box-shadow: 3px 0px 13px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 0px 13px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 0px 13px 0px rgba(0,0,0,0.75);
+}
+
+.game-screen {
+    background-color: #F2EDD8;
+    height: 180px;
+    width: 180px;
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 3px 0px 13px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 3px 0px 13px 0px rgba(0,0,0,0.75);
+    box-shadow: inset 3px 0px 13px 0px rgba(0,0,0,0.75);
+}
+.game-screen-game-title {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 25px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    padding-top: 16px;
+}
+
+.game-screen-control-buttons {
+    position: fixed;
+    display: inline-block;
+    margin-top: 60px;
+    font-family: 'Oswald', sans-serif;
+}
+.game-screen-status-screen {
+    height: 35px;
+    width: 35px;
+    background-color: #e26161;
+    position: absolute;
+    margin: auto;
+    left: 12px;
+    right: 0;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    line-height: 35px;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+.game-screen-start-button {
+    position: absolute;
+    margin: auto;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 75px;
+    padding: 10px;
+    background-color: #5D4C46;
+    border-radius: 50%;
+}
+
+.game-screen-start-button-inner {
+    position: absolute;
+    padding: 6px;
+    background-color: #5D4C46;
+    border-radius: 50%;
+    left: 4px;
+    top: 4px;
+    cursor: pointer;
+}
+
+.game-screen-strict-button {
+    position: absolute;
+    margin: auto;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 130px;
+    padding: 10px;
+    background-color: #5D4C46;
+    border-radius: 50%;
+}
+
+.game-screen-strict-button-inner {
+    position: absolute;
+    padding: 6px;
+    background-color: #5D4C46;
+    border-radius: 50%;
+    left: 4px;
+    top: 4px;
+    cursor: pointer;
+}
+
+.game-screen-buttons-info {
+    position: absolute;
+    display: inline-block;
+    top: 36px;
+}
+
+.game-screen-buttons-info-score {
+    position: absolute;
+    left: 4px;
+}
+
+.game-screen-buttons-info-start {
+    position: absolute;
+    left: 60px;
+}
+
+.game-screen-buttons-info-strict {
+    position: absolute;
+    left: 115px;
+}
+
+.game-screen-on-off-button {
+    position: absolute;
+    height: 30px;
+    width: 80px;
+    top: 120px;
+    left: 50px;
+    border-radius: 5px;
+    background-color: #5D4C46;
+}
+
+.game-screen-on-off-button-switch {
+    position: absolute;
+    height: 26px;
+    width: 38px;
+    top: 2px;
+    left: 2px;
+    border-radius: 5px;
+    background-color: #F2EDD8;
+}
+
+@media only screen and (min-width: 500px) {
+    .game-container {
+        padding: 0;
+        height: 82vh;
+        width: 82vh;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
